@@ -2,9 +2,9 @@ from Crypto.Cipher import DES
 from secrets import token_bytes
 
 
-def des_key(bits: int = 8):
-    bits = 8
-    return token_bytes(bits)
+def des_key():
+    bytes = 8
+    return token_bytes(bytes)
 
 
 def encrypt(mensagem, chave):
@@ -26,9 +26,9 @@ def decrypt(nonce, texto_cifrado, tag, chave):
     except:
         return False
 
-def run(mensagem, bits):
+def run(mensagem):
 
-    key = des_key(bits)
+    key = des_key()
     nonce, encrypted, tag = encrypt(mensagem, key)
     decrypted = decrypt(nonce, encrypted, tag, key)
 

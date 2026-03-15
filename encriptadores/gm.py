@@ -1,8 +1,8 @@
 from Crypto.Util.number import getPrime, getRandomRange
 from encriptadores.utils import string_para_bits, bits_para_string
 
-def gm_keys(bits: int = 1024):
-    bits = 1024
+def gm_keys():
+    bits = 512
 
     while True:
         p = getPrime(bits)
@@ -59,9 +59,9 @@ def decrypt_gm(encrypted, p, q):
 
     return mensagem_decriptada
 
-def run(mensagem, bits):
+def run(mensagem):
 
-    n, x, p, q = gm_keys(bits)
+    n, x, p, q = gm_keys()
     encrypted = encrypt_gm(mensagem, n, x)
     decrypted = decrypt_gm(encrypted, p, q)
 
