@@ -3,7 +3,6 @@ import tracemalloc
 from encriptadores import rkey, dkey, gkey, rencrypt, dencrypt, gencrypt, rdecrypt, ddecrypt, gdecrypt, rrun, drun, grun
 import time
 import json
-from plotagem import plotResultado
 
 algorithms = {
     "rsa" : rrun,
@@ -155,7 +154,6 @@ def run_tests_with_same_bits(dados_path, resultados_path):
 if __name__ == "__main__":
     dados = "conteudo_extenso"
     run_tests_with_same_bits(f"./resultados_{dados}/teste_{dados}.json", f"./resultados_{dados}/resultado_{dados}.json")
-    plotResultado(f"./resultados_{dados}/resultado_{dados}.json", f"./resultados_{dados}/")
 
 
 
