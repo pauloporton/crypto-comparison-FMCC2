@@ -4,6 +4,9 @@ import json
 import copy
 
 def plot_metrica_media_por_tipo_teste():
+    # Visto que o algoritmo GM polui o gráfico ao estourar o consumo em largos textos, a
+    # plotagem do dado de conteúdo extenso foi removida para ser analisada em particular.
+
     modelo_base = {
          "rsa" : {
               "senhas" : 0,
@@ -74,8 +77,6 @@ def plot_metrica_media_por_tipo_teste():
     plt.savefig(f'grafico_linhas.png')
     plt.close()
 
-                
-    
 
 def plot_metricas_por_algoritmos_em_colunas(resultado, base_path):
 
@@ -96,11 +97,9 @@ def plot_metricas_por_algoritmos_em_colunas(resultado, base_path):
 
     df = pd.DataFrame(rows)
 
-    # Mapeamento de cores solicitado
     cores_map = {'rsa': 'red', 'des': 'green', 'gm': 'blue'}
     df['color'] = df['algoritmo'].map(cores_map)
 
-    # Configurações das métricas para os 4 gráficos
     metricas_alvo = [
         ('time', 'Tempo de Execução (s)'),
         ('clock', 'Ciclos de CPU (Clock)'),
@@ -108,7 +107,6 @@ def plot_metricas_por_algoritmos_em_colunas(resultado, base_path):
         ('bigO', 'Estimativa em Big O (ciclos)')
     ]
 
-    # 3. Gerar os 4 gráficos
     for i, (col, titulo) in enumerate(metricas_alvo, 1):
         plt.figure(figsize=(12, 6))
         
